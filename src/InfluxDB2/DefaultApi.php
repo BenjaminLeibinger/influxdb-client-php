@@ -159,7 +159,7 @@ class DefaultApi
                         '[%d] Error connecting to the API (%s)(%s)',
                         $statusCode,
                         $request->getUri(),
-                        $jsonBody ? ": {$jsonBody->message}" : ''
+                        $jsonBody && property_exists($jsonBody, 'message') ? ": {$jsonBody->message}" : $responseBody
                     ),
                     $statusCode,
                     $response->getHeaders(),
